@@ -1,0 +1,21 @@
+openapi: 3.1.0
+info:
+  title: Fast Audio Chat API
+  version: 0.1.0
+servers:
+- url: /v1/gateway
+tags:
+- name: Chat
+paths:
+  /chat/completions/:
+    post:
+      summary: Chat Completions
+      operationId: chat_completions_chat_completions__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Chat

@@ -1,0 +1,311 @@
+openapi: 3.1.0
+info:
+  title: Fast Audio gateway API
+  version: 0.1.0
+servers:
+- url: /v1/gateway
+tags:
+- name: gateway
+paths:
+  /chatbots/{chatbot_id}/chat/completions/:
+    post:
+      tags:
+      - gateway
+      summary: Call a specific chatbot via API key (OpenAI-compatible)
+      operationId: GatewayChatbotChatCompletions
+      parameters:
+      - name: chatbot_id
+        in: path
+        required: true
+        schema:
+          type: integer
+          title: Chatbot Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GatewayChatbotChatReq'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayChatbotChatRes'
+        '400':
+          description: Unsupported chatbot type
+        '401':
+          description: Authentication failed
+        '404':
+          description: Chatbot not found
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /claude/v1/models/:
+    get:
+      tags:
+      - gateway
+      summary: List Anthropic models
+      description: 'List accessible Anthropic models in Anthropic API format.
+
+
+        Used by Claude for Office and other Anthropic SDK clients that call
+
+        GET /v1/models to discover available models.'
+      operationId: AnthropicListModels
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                additionalProperties: true
+                type: object
+                title: Response Anthropiclistmodels
+  /claude/v1/messages/:
+    post:
+      tags:
+      - gateway
+      summary: Anthropic Messages API pass-through
+      operationId: AnthropicMessages
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /claude/v1/messages/count_tokens/:
+    post:
+      tags:
+      - gateway
+      summary: Anthropic count_tokens pass-through
+      description: Pass-through proxy for Anthropic token counting. No credit logic needed.
+      operationId: AnthropicCountTokens
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /responses/:
+    post:
+      tags:
+      - gateway
+      summary: OpenAI Responses API pass-through
+      operationId: CreateResponse
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+  /responses/{response_id}/:
+    get:
+      tags:
+      - gateway
+      summary: Poll OpenAI background response
+      operationId: GetResponse
+      parameters:
+      - name: response_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Response Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+  /responses/{response_id}/cancel/:
+    post:
+      tags:
+      - gateway
+      summary: Cancel OpenAI background response
+      operationId: CancelResponse
+      parameters:
+      - name: response_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Response Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    ChatCompletionUsage:
+      properties:
+        prompt_tokens:
+          type: integer
+          title: Prompt Tokens
+          default: 0
+        completion_tokens:
+          type: integer
+          title: Completion Tokens
+          default: 0
+        total_tokens:
+          type: integer
+          title: Total Tokens
+          default: 0
+      type: object
+      title: ChatCompletionUsage
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ChatMessage:
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+          title: Role
+        content:
+          type: string
+          title: Content
+      type: object
+      required:
+      - role
+      - content
+      title: ChatMessage
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    GatewayChatbotChatReq:
+      properties:
+        messages:
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+          type: array
+          minItems: 1
+          title: Messages
+        stream:
+          type: boolean
+          title: Stream
+          default: false
+      type: object
+      required:
+      - messages
+      title: GatewayChatbotChatReq
+      description: 'Stateless from the caller''s view — the caller supplies the full message
+
+        history each call; no session is persisted server-side.'
+    ChatCompletionChoice:
+      properties:
+        index:
+          type: integer
+          title: Index
+          default: 0
+        message:
+          $ref: '#/components/schemas/ChatCompletionMessage'
+        finish_reason:
+          type: string
+          title: Finish Reason
+          default: stop
+      type: object
+      required:
+      - message
+      title: ChatCompletionChoice
+    GatewayChatbotChatRes:
+      properties:
+        id:
+          type: string
+          title: Id
+        object:
+          type: string
+          const: chat.completion
+          title: Object
+          default: chat.completion
+        created:
+          type: integer
+          title: Created
+          default: 0
+        model:
+          type: string
+          title: Model
+        choices:
+          items:
+            $ref: '#/components/schemas/ChatCompletionChoice'
+          type: array
+          title: Choices
+        usage:
+          anyOf:
+          - $ref: '#/components/schemas/ChatCompletionUsage'
+          - type: 'null'
+        credits:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Credits
+      type: object
+      required:
+      - id
+      - model
+      - choices
+      title: GatewayChatbotChatRes
+    ChatCompletionMessage:
+      properties:
+        role:
+          type: string
+          const: assistant
+          title: Role
+          default: assistant
+        content:
+          type: string
+          title: Content
+      type: object
+      required:
+      - content
+      title: ChatCompletionMessage

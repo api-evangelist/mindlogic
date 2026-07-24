@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: Fast Audio Models API
+  version: 0.1.0
+servers:
+- url: /v1/gateway
+tags:
+- name: Models
+paths:
+  /models/:
+    get:
+      summary: List Models
+      description: List all accessible models in OpenAI format.
+      operationId: list_models_models__get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Models
+  /models/{model}/:
+    get:
+      summary: Get Model
+      description: Get a single model detail in OpenAI format.
+      operationId: get_model_models__model___get
+      parameters:
+      - name: model
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Model
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Models
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

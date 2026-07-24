@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: Fast Audio Images API
+  version: 0.1.0
+servers:
+- url: /v1/gateway
+tags:
+- name: Images
+paths:
+  /images/generate/:
+    post:
+      summary: Generate Image
+      description: "Generate image(s) via the gateway.\n\nReturns images immediately for sync providers (Google, OpenAI) or\nan operation_id for async providers (Fal, Replicate).\n\nRequest body:\n    model (str): Image model name\n    prompt (str): Generation prompt\n    number_of_images (int, optional): Number of images to generate (default: 1)\n    aspect_ratio (str, optional): e.g. \"1:1\", \"16:9\"\n    image_size (str, optional): e.g. \"1024x1024\"\n    quality (str, optional): e.g. \"standard\", \"hd\"\n    input_images (list[str], optional): Input image URLs for edit mode"
+      operationId: generate_image_images_generate__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Images
+  /images/generate/{operation_id}/:
+    get:
+      summary: Poll Image Status
+      description: "Poll async image generation status (Fal/Replicate providers only).\n\nQuery params:\n    model (str): Image model name used for generation"
+      operationId: poll_image_status_images_generate__operation_id___get
+      parameters:
+      - name: operation_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Operation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Images
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

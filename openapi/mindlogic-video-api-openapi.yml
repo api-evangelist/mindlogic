@@ -1,0 +1,119 @@
+openapi: 3.1.0
+info:
+  title: Fast Audio Video API
+  version: 0.1.0
+servers:
+- url: /v1/gateway
+tags:
+- name: Video
+paths:
+  /video/generation/:
+    post:
+      summary: Create Video
+      description: 'Start async video generation.
+
+
+        Request body: {model, prompt, parameters?, input_urls?}
+
+        Returns: {operation_id, status: "processing", video_model_id: int}'
+      operationId: create_video_video_generation__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Video
+  /video/generation/{operation_id}/download/:
+    get:
+      summary: Download Video File
+      description: Download completed video — streams raw bytes (video/mp4).
+      operationId: download_video_file_video_generation__operation_id__download__get
+      parameters:
+      - name: operation_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Operation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Video
+  /video/generation/{operation_id}/:
+    get:
+      summary: Get Video Generation Status
+      description: 'Poll video generation status.
+
+
+        Returns: {operation_id, status, video_uri?, duration_seconds?}'
+      operationId: get_video_generation_status_video_generation__operation_id___get
+      parameters:
+      - name: operation_id
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Operation Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      tags:
+      - Video
+components:
+  schemas:
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError

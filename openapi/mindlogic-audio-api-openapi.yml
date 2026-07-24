@@ -1,0 +1,27 @@
+openapi: 3.1.0
+info:
+  title: Fast Audio API
+  version: 0.1.0
+servers:
+- url: /v1/gateway
+tags:
+- name: Audio
+paths:
+  /audio/speech/:
+    post:
+      summary: Text To Speech
+      description: 'Generate speech audio from text using a Gemini TTS model.
+
+
+        Request body: {model, input, voice, speakers?}
+
+        Response: raw PCM bytes (audio/pcm) with X-Input-Tokens / X-Output-Tokens headers.'
+      operationId: text_to_speech_audio_speech__post
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+      tags:
+      - Audio

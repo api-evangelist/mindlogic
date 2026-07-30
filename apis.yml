@@ -1,26 +1,211 @@
 aid: mindlogic
 name: Mindlogic
-description: 'Mindlogic is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: AI/ML. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Mindlogic is a South Korean generative-AI company whose products include
+  FactChat (a multi-LLM enterprise chat platform with Studio chatbot building,
+  deep research, meeting notes, and image/video generation), Bliss (a persona
+  chatbot that learns a person's voice and personality for fan engagement), and
+  Informe (a multilingual document-grounded website chatbot). For developers,
+  Mindlogic operates the FactChat API Gateway — a unified, OpenAI- and
+  Anthropic-compatible LLM proxy that fronts models from OpenAI, Anthropic,
+  Google Gemini, xAI and Perplexity behind a single API key, metered in credits,
+  with chat completions, an OpenAI Responses pass-through, an Anthropic Messages
+  pass-through, text-to-speech, and image/video generation.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://mindlogic.ai/apple-icon.png
 url: https://raw.githubusercontent.com/api-evangelist/mindlogic/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - partech
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: active
+x-tier-reason: public-api-gateway
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-- Ai/Ml
-apis: []
+- AI/ML
+- Generative AI
+- Conversational AI
+- LLM Gateway
+- Chatbots
+- API Gateway
+- Korea
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: mindlogic:mindlogic-audio-api
+  name: Mindlogic Audio API
+  description: The Audio API from Mindlogic — 1 operation(s) for audio.
+  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
+  tags:
+  - Audio
+  properties:
+  - type: OpenAPI
+    url: openapi/mindlogic-audio-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  - type: APIReference
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+  - type: GettingStarted
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+- aid: mindlogic:mindlogic-chat-api
+  name: Mindlogic Chat API
+  description: The Chat API from Mindlogic — 1 operation(s) for chat.
+  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
+  tags:
+  - Chat
+  properties:
+  - type: OpenAPI
+    url: openapi/mindlogic-chat-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  - type: APIReference
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+  - type: GettingStarted
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+- aid: mindlogic:mindlogic-credits-api
+  name: Mindlogic Credits API
+  description: The Credits API from Mindlogic — 1 operation(s) for credits.
+  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
+  tags:
+  - Credits
+  properties:
+  - type: OpenAPI
+    url: openapi/mindlogic-credits-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  - type: APIReference
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+  - type: GettingStarted
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+- aid: mindlogic:mindlogic-gateway-api
+  name: Mindlogic gateway API
+  description: The gateway API from Mindlogic — 7 operation(s) for gateway.
+  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
+  tags:
+  - gateway
+  properties:
+  - type: OpenAPI
+    url: openapi/mindlogic-gateway-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  - type: APIReference
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+  - type: GettingStarted
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+- aid: mindlogic:mindlogic-images-api
+  name: Mindlogic Images API
+  description: The Images API from Mindlogic — 2 operation(s) for images.
+  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
+  tags:
+  - Images
+  properties:
+  - type: OpenAPI
+    url: openapi/mindlogic-images-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  - type: APIReference
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+  - type: GettingStarted
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+- aid: mindlogic:mindlogic-models-api
+  name: Mindlogic Models API
+  description: The Models API from Mindlogic — 2 operation(s) for models.
+  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
+  tags:
+  - Models
+  properties:
+  - type: OpenAPI
+    url: openapi/mindlogic-models-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  - type: APIReference
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+  - type: GettingStarted
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+- aid: mindlogic:mindlogic-video-api
+  name: Mindlogic Video API
+  description: The Video API from Mindlogic — 3 operation(s) for video.
+  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
+  tags:
+  - Video
+  properties:
+  - type: OpenAPI
+    url: openapi/mindlogic-video-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  - type: APIReference
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+  - type: GettingStarted
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
 common:
+- type: DeveloperPortal
+  url: https://docs.mindlogic.ai/
+- type: Documentation
+  url: https://docs.mindlogic.ai/docs
+- type: APIReference
+  url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+- type: GettingStarted
+  url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+- type: Authentication
+  url: authentication/mindlogic-authentication.yml
+- type: MCPServer
+  url: mcp/mindlogic-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: ErrorCatalog
+  url: errors/mindlogic-error-codes.yml
+- type: Conventions
+  url: conventions/mindlogic-conventions.yml
+- type: Conformance
+  url: conformance/mindlogic-conformance.yml
+- type: Overlay
+  url: overlays/mindlogic-api-gateway-overlay.yaml
+- type: DataModel
+  url: data-model/mindlogic-data-model.yml
+- type: Lifecycle
+  url: lifecycle/mindlogic-lifecycle.yml
+- type: LLMsTxt
+  url: llms/mindlogic-llms.txt
+- type: DomainSecurity
+  url: security/mindlogic-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/mindlogic-agentic-access.yml
+- type: Blog
+  url: https://blog.mindlogic.ai/
+- type: Support
+  url: https://docs.mindlogic.ai/docs/general/factchat/support/help-center
+- type: TermsOfService
+  url: https://factchat-public.s3.ap-northeast-2.amazonaws.com/public/pdf/ko_terms_of_service.pdf
+- type: PrivacyPolicy
+  url: https://factchat-public.s3.ap-northeast-2.amazonaws.com/public/pdf/ko_privacy_policy.pdf
 - type: Website
   url: https://mindlogic.ai/

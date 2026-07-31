@@ -1,0 +1,20 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mindlogic-api-gateway-openapi-original.json
+description: >-
+  Lifecycle facts for the Mindlogic FactChat API Gateway. Versioning is derived
+  from the URI path; no published deprecation policy, SLA, or status page was
+  found during this pass (probed 2026-07-20).
+versioning:
+  scheme: uri-path
+  current: v1
+  example_prefix: /v1/gateway
+  docs: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No deprecation/Sunset policy documented.
+sla:
+  url: null
+status_page: null
+deprecated_operations: []

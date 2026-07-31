@@ -1,0 +1,116 @@
+# Mindlogic Docs
+
+> Mindlogic Docs is the official documentation site for Mindlogic products including FactChat, FactChat Admin, FactChat API Gateway, company guides, Informe, and support resources. Use this file as an LLM-friendly index to find the most important product, admin, API, integration, and policy pages.
+
+This file follows the llms.txt proposal from https://llmstxt.org/: a single H1 title, a short blockquote summary, optional interpretation guidance, and H2 sections containing curated Markdown link lists.
+
+The canonical docs domain is https://docs.mindlogic.ai. Most product documentation is served under `/docs/{tenant}/{product}/{pageGroup}/{pagePath}`. Use `general` as the public fallback tenant when a customer-specific tenant slug is not known. Customer-specific tenants may expose the same paths under their own tenant slug.
+
+When helping users with FactChat, prefer the FactChat user guides for end-user workflows, FactChat Admin guides for workspace administrators, and API Gateway pages for developer/API questions. Do not infer customer-specific policies from generic pages when a tenant-specific manual or administrator setting is available.
+
+## FactChat getting started
+
+- [FactChat introduction](https://docs.mindlogic.ai/docs/general/factchat/getting-started/introduction): Product introduction and core concepts.
+- [FactChat quick start](https://docs.mindlogic.ai/docs/general/factchat/getting-started/quick-start): Start here for first-time users and core product orientation.
+- [Install app](https://docs.mindlogic.ai/docs/general/factchat/getting-started/install-app): App installation guidance.
+- [Two-factor authentication](https://docs.mindlogic.ai/docs/general/factchat/getting-started/two-factor-auth): User OTP and account security setup.
+
+## FactChat product guides
+
+- [Chat](https://docs.mindlogic.ai/docs/general/factchat/product/chat): Chat interface, model usage, files, and day-to-day conversation workflows.
+- [Multi-model](https://docs.mindlogic.ai/docs/general/factchat/product/multi-model): Multi-model usage and model selection.
+- [File upload](https://docs.mindlogic.ai/docs/general/factchat/product/file-upload): Upload files and use documents in chat.
+- [Web search](https://docs.mindlogic.ai/docs/general/factchat/product/web-search): Use web search in FactChat.
+- [Studio](https://docs.mindlogic.ai/docs/general/factchat/product/studio): Build and manage custom chatbots and knowledge-backed assistants.
+- [Studio knowledge editing](https://docs.mindlogic.ai/docs/general/factchat/product/studio-edit-knowledge): Manage chatbot knowledge sources.
+- [Studio workflow](https://docs.mindlogic.ai/docs/general/factchat/product/studio-workflow): Build workflow-style chatbot behavior.
+- [Studio sharing](https://docs.mindlogic.ai/docs/general/factchat/product/studio-share): Share Studio chatbots with others.
+- [Store](https://docs.mindlogic.ai/docs/general/factchat/product/store): Discover and use available chatbots.
+- [Project](https://docs.mindlogic.ai/docs/general/factchat/product/project): Organize work and related chat resources by project.
+- [Project memory](https://docs.mindlogic.ai/docs/general/factchat/product/project-memory): Use memory within projects.
+- [Super Agent](https://docs.mindlogic.ai/docs/general/factchat/product/super-agent): Agentic task execution and advanced workflows.
+- [Deep Research](https://docs.mindlogic.ai/docs/general/factchat/product/deep-research): Long-form research workflows and outputs.
+- [Deep Thinking](https://docs.mindlogic.ai/docs/general/factchat/product/deep-thinking): Advanced reasoning workflows.
+- [Meeting notes](https://docs.mindlogic.ai/docs/general/factchat/product/meeting-notes): Meeting recording and note workflows.
+- [Presentation](https://docs.mindlogic.ai/docs/general/factchat/product/presentation): Presentation and slide-generation workflows.
+- [Image Generation](https://docs.mindlogic.ai/docs/general/factchat/product/image-generation): Image generation features.
+- [Video Generation](https://docs.mindlogic.ai/docs/general/factchat/product/video-generation): Video generation features.
+- [Voice Agent](https://docs.mindlogic.ai/docs/general/factchat/product/voice-agent): Voice-agent product guidance.
+- [Korea in Data](https://docs.mindlogic.ai/docs/general/factchat/product/korea-in-data): Korea-specific data feature guide.
+- [Law in Data](https://docs.mindlogic.ai/docs/general/factchat/product/law-in-data): Legal-data feature guide.
+- [University in Data](https://docs.mindlogic.ai/docs/general/factchat/product/univ-in-data): University-data feature guide.
+
+## FactChat Admin guides
+
+- [Admin Console overview](https://docs.mindlogic.ai/docs/general/factchat-admin/getting-started/overview): Start here for workspace administrators.
+- [All members](https://docs.mindlogic.ai/docs/general/factchat-admin/members/all-members): Member management for workspace administrators.
+- [Pending approvals](https://docs.mindlogic.ai/docs/general/factchat-admin/members/approvals): Review pending member approvals.
+- [Invite members](https://docs.mindlogic.ai/docs/general/factchat-admin/members/invitations): Invite users to the workspace.
+- [Group management](https://docs.mindlogic.ai/docs/general/factchat-admin/members/groups): Manage groups and membership.
+- [Group admins](https://docs.mindlogic.ai/docs/general/factchat-admin/members/group-admins): Assign and manage group administrators.
+- [Credit usage](https://docs.mindlogic.ai/docs/general/factchat-admin/credits/usage-tracking): Track credit usage and workspace consumption.
+- [Credit purchase history](https://docs.mindlogic.ai/docs/general/factchat-admin/credits/transactions): Review credit purchases and transactions.
+- [User activity](https://docs.mindlogic.ai/docs/general/factchat-admin/credits/user-activity): Review user-level activity.
+- [Model statistics](https://docs.mindlogic.ai/docs/general/factchat-admin/credits/model-stats): Analyze model usage statistics.
+- [Chatbot publishing management](https://docs.mindlogic.ai/docs/general/factchat-admin/chatbots/chatbot-approvals): Review and approve chatbot publication requests.
+- [Certification request management](https://docs.mindlogic.ai/docs/general/factchat-admin/chatbots/certification-requests): Manage chatbot certification requests.
+- [Default pinned agents](https://docs.mindlogic.ai/docs/general/factchat-admin/chatbots/default-pinned-agents): Configure default pinned agents.
+- [Store category management](https://docs.mindlogic.ai/docs/general/factchat-admin/chatbots/categories): Manage store categories.
+
+## FactChat Admin security and operations
+
+- [Data security](https://docs.mindlogic.ai/docs/general/factchat-admin/security/data-security): Security, data protection, and platform controls for administrators.
+- [Audit logs](https://docs.mindlogic.ai/docs/general/factchat-admin/security/audit-logs): Audit log overview.
+- [Audit log search and filters](https://docs.mindlogic.ai/docs/general/factchat-admin/security/audit-logs-search): Search and filter audit logs.
+- [Audit log detail view](https://docs.mindlogic.ai/docs/general/factchat-admin/security/audit-logs-detail): Inspect individual audit log entries.
+- [Public chatbot usage and abnormal access](https://docs.mindlogic.ai/docs/general/factchat-admin/security/audit-logs-public-access): Review public chatbot access and abnormal usage.
+- [Admin two-factor authentication](https://docs.mindlogic.ai/docs/general/factchat-admin/security/two-factor-auth): Administrator OTP and account security.
+- [Feature permissions](https://docs.mindlogic.ai/docs/general/factchat-admin/platform/feature-permissions): Configure feature access and permissions.
+- [Announcements management](https://docs.mindlogic.ai/docs/general/factchat-admin/platform/announcements): Manage workspace announcements.
+- [FAQ management](https://docs.mindlogic.ai/docs/general/factchat-admin/platform/faqs): Manage FAQs.
+- [Inquiry management](https://docs.mindlogic.ai/docs/general/factchat-admin/platform/inquiries): Manage user inquiries.
+- [Policies](https://docs.mindlogic.ai/docs/general/factchat-admin/platform/policies): Manage policy documents.
+- [Resource Center management](https://docs.mindlogic.ai/docs/general/factchat-admin/platform/resources): Manage resource-center content.
+
+## API Gateway getting started
+
+- [API Gateway overview](https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview): Start here for developers using the Mindlogic API Gateway.
+- [Gateway authentication](https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/authentication): API-key authentication and request setup.
+- [Gateway models](https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/models): Available models and model selection guidance.
+
+## API Gateway reference
+
+- [Chat Completions API](https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions): OpenAI-compatible chat completions endpoint.
+- [Responses API](https://docs.mindlogic.ai/docs/general/api-gateway/reference/responses-api): Responses API endpoint and request format.
+- [Messages API](https://docs.mindlogic.ai/docs/general/api-gateway/reference/messages-api): Messages API endpoint and request format.
+- [Gateway credits API](https://docs.mindlogic.ai/docs/general/api-gateway/reference/credits): Credit and usage-related API reference.
+- [Image generation API](https://docs.mindlogic.ai/docs/general/api-gateway/reference/image-generation): Image generation API reference.
+- [Video generation API](https://docs.mindlogic.ai/docs/general/api-gateway/reference/video-generation): Video generation API reference.
+- [Audio TTS API](https://docs.mindlogic.ai/docs/general/api-gateway/reference/audio-tts): Text-to-speech API reference.
+- [Gateway error reference](https://docs.mindlogic.ai/docs/general/api-gateway/reference/errors): Error codes and troubleshooting for Gateway calls.
+
+## API Gateway integrations
+
+- [cURL integration](https://docs.mindlogic.ai/docs/general/api-gateway/integrations/curl): Minimal cURL examples for the Gateway.
+- [OpenAI SDK integration](https://docs.mindlogic.ai/docs/general/api-gateway/integrations/openai-sdk): Use the Gateway with OpenAI-compatible SDKs.
+- [Claude Code integration](https://docs.mindlogic.ai/docs/general/api-gateway/integrations/claude-code): Configure Claude Code with the Gateway.
+- [OpenCode integration](https://docs.mindlogic.ai/docs/general/api-gateway/integrations/opencode): Configure OpenCode with the Gateway.
+- [OpenClaw integration](https://docs.mindlogic.ai/docs/general/api-gateway/integrations/openclaw): Configure OpenClaw with the Gateway.
+
+## Support and policies
+
+- [FactChat announcements](https://docs.mindlogic.ai/docs/general/factchat/support/announcements): Product announcements.
+- [FactChat Help Center](https://docs.mindlogic.ai/docs/general/factchat/support/help-center): Help Center overview.
+- [FactChat inquiries](https://docs.mindlogic.ai/docs/general/factchat/support/inquiries): Submit and manage inquiries.
+- [FactChat policies](https://docs.mindlogic.ai/docs/general/factchat/support/policies): FactChat policy documents.
+- [Contact us](https://docs.mindlogic.ai/docs/general/support/help-center/inquiry): Contact and inquiry support page.
+
+## Maintenance
+
+- [llms.txt specification](https://llmstxt.org/): Follow this format when updating the docs index: single H1, short blockquote summary, guidance paragraphs, H2 file-list sections, and `## Optional` for secondary links.
+- [Mindlogic docs root](https://docs.mindlogic.ai/docs): Review the visible docs navigation when adding or removing public docs links from this file.
+
+## Optional
+
+- [Docs home](https://docs.mindlogic.ai/docs): Documentation landing page.
+- [Mindlogic docs site](https://docs.mindlogic.ai): Public documentation root.

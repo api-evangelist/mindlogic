@@ -1,0 +1,38 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Mindlogic FactChat API Gateway
+  version: 1.0.0
+extends: openapi/mindlogic-api-gateway-openapi-original.json
+x-provenance:
+  generated: '2026-07-20'
+  method: generated
+  source: openapi/mindlogic-api-gateway-openapi-original.json
+actions:
+  - target: $.info
+    update:
+      title: Mindlogic FactChat API Gateway
+      description: >-
+        Unified LLM gateway that presents OpenAI-compatible chat completions, an
+        OpenAI Responses pass-through, and an Anthropic Messages pass-through
+        over models from OpenAI, Anthropic, Google Gemini, xAI and Perplexity.
+        Authenticated with an API key (Authorization: Bearer or x-api-key) and
+        metered in credits.
+      x-apievangelist-rating: 3
+      x-api-provider: Mindlogic
+  - target: $.servers
+    update:
+      - url: https://factchat-cloud.mindlogic.ai/v1/gateway
+        description: Production FactChat API Gateway
+  - target: $.components
+    update:
+      securitySchemes:
+        BearerApiKey:
+          type: apiKey
+          in: header
+          name: Authorization
+          description: "Authorization: Bearer <API_KEY> (default for OpenAI SDK clients)."
+        XApiKey:
+          type: apiKey
+          in: header
+          name: x-api-key
+          description: "x-api-key: <API_KEY> (default for Anthropic SDK clients)."

@@ -1,0 +1,54 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mindlogic.ai/docs/general/api-gateway
+docs: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+description: >-
+  Cross-cutting request/response semantics for the Mindlogic FactChat API
+  Gateway — a unified LLM proxy that presents OpenAI-, OpenAI-Responses- and
+  Anthropic-compatible surfaces over OpenAI, Anthropic, Google Gemini, xAI and
+  Perplexity models.
+base_url: https://factchat-cloud.mindlogic.ai/v1/gateway
+authentication:
+  style: api-key (header)
+  headers: ["Authorization: Bearer <key>", "x-api-key: <key>"]
+  ref: authentication/mindlogic-authentication.yml
+compatibility:
+  openai_chat_completions: true      # /chat/completions/ — 100% OpenAI SDK compatible per docs
+  openai_responses: true             # /responses/
+  anthropic_messages: true           # /claude/v1/messages/
+  migration: "Point an existing OpenAI/Anthropic SDK at the base URL; no code changes required."
+streaming:
+  supported: true
+  transport: server-sent-events
+  request_param: stream (boolean, default false)
+  usage_in_stream: stream_options to include usage in the final chunk
+versioning:
+  scheme: uri-path
+  current: v1
+  example_prefix: /v1/gateway
+idempotency:
+  supported: false
+  note: No idempotency-key header is documented for the Gateway.
+pagination:
+  supported: false
+  note: No list endpoints paginate; /models/ returns the full accessible model list.
+rate_limiting:
+  signal: HTTP 429 "Rate limit exceeded"
+  guidance: Implement exponential backoff on 429.
+metering:
+  unit: credits
+  balance_endpoint: GET /v1/gateway/credits/
+  usage_headers: ["X-Input-Tokens", "X-Output-Tokens"]   # on /audio/speech/
+  exhausted_error: 402 "Credit balance exhausted"
+error_envelope:
+  gateway: '{"detail": {"code": <int>, "message": "<type> - <message>"}}'
+  validation: '{"detail": [{"loc": [...], "msg": "...", "type": "..."}]}'
+  ref: errors/mindlogic-error-codes.yml
+async_operations:
+  pattern: operation_id polling
+  applies_to: [image generation (Fal/Replicate), video generation]
+  poll: GET .../{operation_id}/
+cross_links:
+  errors: errors/mindlogic-error-codes.yml
+  authentication: authentication/mindlogic-authentication.yml
+  conformance: conformance/mindlogic-conformance.yml

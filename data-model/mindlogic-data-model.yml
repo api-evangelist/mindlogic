@@ -1,0 +1,63 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/mindlogic-api-gateway-openapi-original.json
+description: >-
+  Entity model derived from the FactChat API Gateway OpenAPI. The Gateway is
+  largely a stateless proxy, so most entities are request/response shapes rather
+  than persisted resources; the addressable server-side resources are Model,
+  Chatbot, background Response, and async Image/Video operations, plus the
+  member Credit balance.
+entities:
+  - name: Model
+    addressable: true
+    id_field: model
+    endpoints: ['GET /models/', 'GET /models/{model}/', 'GET /claude/v1/models/']
+  - name: Chatbot
+    addressable: true
+    id_field: chatbot_id
+    id_type: integer
+    endpoints: ['POST /chatbots/{chatbot_id}/chat/completions/']
+  - name: Response
+    addressable: true
+    id_field: response_id
+    description: OpenAI background response resource.
+    endpoints: ['POST /responses/', 'GET /responses/{response_id}/', 'POST /responses/{response_id}/cancel/']
+  - name: ImageOperation
+    addressable: true
+    id_field: operation_id
+    description: Async image-generation operation (Fal/Replicate providers).
+    endpoints: ['POST /images/generate/', 'GET /images/generate/{operation_id}/']
+  - name: VideoOperation
+    addressable: true
+    id_field: operation_id
+    description: Async video-generation operation.
+    endpoints: ['POST /video/generation/', 'GET /video/generation/{operation_id}/', 'GET /video/generation/{operation_id}/download/']
+  - name: Credit
+    addressable: false
+    description: Authenticated member's remaining credit balance.
+    endpoints: ['GET /credits/']
+  - name: ChatCompletion
+    addressable: false
+    description: Response envelope for chat completions.
+    schema: GatewayChatbotChatRes
+relationships:
+  - from: GatewayChatbotChatRes
+    to: ChatCompletionChoice
+    kind: has_many
+    via: choices
+  - from: ChatCompletionChoice
+    to: ChatCompletionMessage
+    kind: has_one
+    via: message
+  - from: GatewayChatbotChatRes
+    to: ChatCompletionUsage
+    kind: has_one
+    via: usage
+  - from: GatewayChatbotChatReq
+    to: ChatMessage
+    kind: has_many
+    via: messages
+  - from: ChatCompletion
+    to: Model
+    kind: belongs_to
+    via: model

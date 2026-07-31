@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/mindlogic-api-gateway-openapi-original.json
+skills:
+  - file: mindlogic-chat-completion.md
+    name: Run a chat completion through the Mindlogic Gateway
+    api: openapi/mindlogic-api-gateway-openapi-original.json
+    operations: [list_models_models__get, chat_completions_chat_completions__post, get_credit_balance_credits__get]
+  - file: mindlogic-generate-image.md
+    name: Generate an image through the Mindlogic Gateway
+    api: openapi/mindlogic-api-gateway-openapi-original.json
+    operations: [generate_image_images_generate__post, poll_image_status_images_generate__operation_id___get]
+  - file: mindlogic-generate-video.md
+    name: Generate a video through the Mindlogic Gateway
+    api: openapi/mindlogic-api-gateway-openapi-original.json
+    operations: [create_video_video_generation__post, get_video_generation_status_video_generation__operation_id___get, download_video_file_video_generation__operation_id__download__get]

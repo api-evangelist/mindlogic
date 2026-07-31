@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+description: >-
+  Cross-cutting standard/interface conformance for the Mindlogic FactChat API
+  Gateway. Compatibility claims are stated in the provider docs and reflected in
+  the harvested OpenAPI operation set.
+standards:
+  - id: openai-chat-completions
+    conforms: true
+    evidence: "/chat/completions/ endpoint; docs claim 100% OpenAI SDK compatibility."
+  - id: openai-responses-api
+    conforms: true
+    evidence: "/responses/ pass-through with poll and cancel operations."
+  - id: anthropic-messages-api
+    conforms: true
+    evidence: "/claude/v1/messages/ and /claude/v1/messages/count_tokens/ pass-through."
+  - id: oauth2
+    conforms: false
+    evidence: API-key auth only (Authorization Bearer / x-api-key); no OAuth2 scheme.
+  - id: openidconnect
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: 'Errors use a FastAPI-style {"detail": ...} envelope, not application/problem+json.'
+  - id: server-sent-events
+    conforms: true
+    evidence: stream=true responses are delivered as SSE.

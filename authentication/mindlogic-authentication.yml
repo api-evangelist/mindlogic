@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/authentication
+docs: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/authentication
+note: >-
+  The harvested OpenAPI (openapi/mindlogic-api-gateway-openapi-original.json)
+  declares no securitySchemes, but the Gateway is API-key authenticated per the
+  docs and confirmed by a live 401 ("Bearer token is not supplied"). This
+  profile is sourced from the documentation.
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+schemes:
+  - name: BearerApiKey
+    type: apiKey
+    in: header
+    scheme_header: Authorization
+    format: "Authorization: Bearer <API_KEY>"
+    default_for: OpenAI SDK and OpenAI-compatible clients
+    sources: [docs]
+  - name: XApiKey
+    type: apiKey
+    in: header
+    parameter_name: x-api-key
+    format: "x-api-key: <API_KEY>"
+    default_for: Anthropic SDK and Claude clients
+    sources: [docs]
+key_management:
+  how_to_obtain: >-
+    Log into the FactChat website, open API Gateway in the left sidebar, click
+    the API-key generation button, then copy and securely store the key.
+  console: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/authentication

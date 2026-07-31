@@ -1,0 +1,73 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.mindlogic.ai/docs/general/api-gateway/reference/errors
+docs: https://docs.mindlogic.ai/docs/general/api-gateway/reference/errors
+description: >-
+  Error reference for the Mindlogic FactChat API Gateway. Codes below are
+  documented on the Gateway error-reference page; the error envelope shape was
+  confirmed against a live unauthenticated request to
+  https://factchat-cloud.mindlogic.ai/v1/gateway/models/.
+envelopes:
+  - name: gateway_error
+    shape: '{"detail": {"code": <int>, "message": "<type> - <human message>"}}'
+    example: '{"detail": {"code": 401, "message": "authentication_error - Bearer token is not supplied"}}'
+    source: live probe (401 from /v1/gateway/models/)
+  - name: validation_error
+    format: fastapi
+    shape: '{"detail": [{"loc": [...], "msg": "<message>", "type": "<error type>"}]}'
+    schema: openapi/mindlogic-api-gateway-openapi-original.json#/components/schemas/HTTPValidationError
+    note: FastAPI-style 422 validation error, referenced by most operations.
+errors:
+  - status: 400
+    name: Bad Request
+    message: Invalid parameters, or a model type that does not match the endpoint.
+    remediation: Validate parameters; verify the model is compatible with the endpoint used.
+  - status: 400
+    name: Bad Request
+    message: "Model 'X' is not an OpenAI model"
+    remediation: Switch to /chat/completions/ or the Claude (Anthropic) endpoints as appropriate.
+  - status: 401
+    name: Unauthorized
+    message: Authorization header is not supplied
+    remediation: "Add an Authorization: Bearer KEY or x-api-key: KEY header."
+  - status: 401
+    name: Unauthorized
+    message: Bearer token is not supplied
+    remediation: "Use the Authorization: Bearer YOUR_KEY format."
+  - status: 401
+    name: Unauthorized
+    message: Invalid API key
+    remediation: Verify the key exists in developer settings (FactChat > API Gateway).
+  - status: 402
+    name: Payment Required
+    message: Credit balance exhausted
+    remediation: Recharge credits in developer settings.
+  - status: 404
+    name: Not Found
+    message: "Model 'X' not found"
+    remediation: Check GET /v1/gateway/models/ and verify the model is activated.
+  - status: 404
+    name: Not Found
+    message: "Model 'X' is not an Anthropic model"
+    remediation: Use /chat/completions/ for non-Anthropic models.
+  - status: 404
+    name: Not Found
+    message: Chatbot not found
+    remediation: Verify the chatbot_id path parameter references an existing chatbot.
+  - status: 422
+    name: Validation Error
+    message: Request body/parameters failed validation.
+    remediation: Inspect detail[].loc / detail[].msg for the offending field.
+  - status: 429
+    name: Rate Limited
+    message: Rate limit exceeded
+    remediation: Implement an exponential-backoff retry strategy.
+  - status: 500
+    name: Server Error
+    message: Upstream provider error.
+    remediation: Contact support with the error details.
+common_issues:
+  - issue: Reasoning + tools conflict
+    behavior: The Gateway auto-removes reasoning_effort on retry.
+  - issue: Empty reasoning-model responses
+    behavior: "Requires max_tokens 16000+; some models also need temperature: 1."

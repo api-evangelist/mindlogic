@@ -1,0 +1,26 @@
+{
+  "provider": "mindlogic",
+  "sources": [
+    "mindlogic-audio-api-openapi.yml",
+    "mindlogic-chat-api-openapi.yml",
+    "mindlogic-credits-api-openapi.yml",
+    "mindlogic-gateway-api-openapi.yml",
+    "mindlogic-images-api-openapi.yml",
+    "mindlogic-models-api-openapi.yml",
+    "mindlogic-video-api-openapi.yml"
+  ],
+  "outputs": [
+    "mindlogic-audio-api-openapi.yml",
+    "mindlogic-chat-api-openapi.yml",
+    "mindlogic-credits-api-openapi.yml",
+    "mindlogic-gateway-api-openapi.yml",
+    "mindlogic-images-api-openapi.yml",
+    "mindlogic-models-api-openapi.yml",
+    "mindlogic-video-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

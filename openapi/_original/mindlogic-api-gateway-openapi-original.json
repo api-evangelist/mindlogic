@@ -1,0 +1,289 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "FastAPI",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/models/": {
+      "get": {
+        "summary": "List Models",
+        "description": "List all accessible models in OpenAI format.",
+        "operationId": "list_models_models__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          }
+        }
+      }
+    },
+    "/models/{model}/": {
+      "get": {
+        "summary": "Get Model",
+        "description": "Get a single model detail in OpenAI format.",
+        "operationId": "get_model_models__model___get",
+        "parameters": [
+          { "name": "model", "in": "path", "required": true, "schema": { "type": "string", "title": "Model" } }
+        ],
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } },
+          "422": { "description": "Validation Error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HTTPValidationError" } } } }
+        }
+      }
+    },
+    "/chat/completions/": {
+      "post": {
+        "summary": "Chat Completions",
+        "operationId": "chat_completions_chat_completions__post",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } }
+        }
+      }
+    },
+    "/chatbots/{chatbot_id}/chat/completions/": {
+      "post": {
+        "tags": ["gateway"],
+        "summary": "Call a specific chatbot via API key (OpenAI-compatible)",
+        "operationId": "GatewayChatbotChatCompletions",
+        "parameters": [
+          { "name": "chatbot_id", "in": "path", "required": true, "schema": { "type": "integer", "title": "Chatbot Id" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/GatewayChatbotChatReq" } } }
+        },
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/GatewayChatbotChatRes" } } } },
+          "400": { "description": "Unsupported chatbot type" },
+          "401": { "description": "Authentication failed" },
+          "404": { "description": "Chatbot not found" },
+          "422": { "description": "Validation Error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HTTPValidationError" } } } }
+        }
+      }
+    },
+    "/claude/v1/models/": {
+      "get": {
+        "tags": ["gateway"],
+        "summary": "List Anthropic models",
+        "description": "List accessible Anthropic models in Anthropic API format.\n\nUsed by Claude for Office and other Anthropic SDK clients that call\nGET /v1/models to discover available models.",
+        "operationId": "AnthropicListModels",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": { "additionalProperties": true, "type": "object", "title": "Response Anthropiclistmodels" } } } }
+        }
+      }
+    },
+    "/claude/v1/messages/": {
+      "post": {
+        "tags": ["gateway"],
+        "summary": "Anthropic Messages API pass-through",
+        "operationId": "AnthropicMessages",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } }
+        }
+      }
+    },
+    "/claude/v1/messages/count_tokens/": {
+      "post": {
+        "tags": ["gateway"],
+        "summary": "Anthropic count_tokens pass-through",
+        "description": "Pass-through proxy for Anthropic token counting. No credit logic needed.",
+        "operationId": "AnthropicCountTokens",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } }
+        }
+      }
+    },
+    "/responses/": {
+      "post": {
+        "tags": ["gateway"],
+        "summary": "OpenAI Responses API pass-through",
+        "operationId": "CreateResponse",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } }
+        }
+      }
+    },
+    "/responses/{response_id}/": {
+      "get": {
+        "tags": ["gateway"],
+        "summary": "Poll OpenAI background response",
+        "operationId": "GetResponse",
+        "parameters": [
+          { "name": "response_id", "in": "path", "required": true, "schema": { "type": "string", "title": "Response Id" } }
+        ],
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } },
+          "422": { "description": "Validation Error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HTTPValidationError" } } } }
+        }
+      }
+    },
+    "/responses/{response_id}/cancel/": {
+      "post": {
+        "tags": ["gateway"],
+        "summary": "Cancel OpenAI background response",
+        "operationId": "CancelResponse",
+        "parameters": [
+          { "name": "response_id", "in": "path", "required": true, "schema": { "type": "string", "title": "Response Id" } }
+        ],
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } },
+          "422": { "description": "Validation Error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HTTPValidationError" } } } }
+        }
+      }
+    },
+    "/audio/speech/": {
+      "post": {
+        "summary": "Text To Speech",
+        "description": "Generate speech audio from text using a Gemini TTS model.\n\nRequest body: {model, input, voice, speakers?}\nResponse: raw PCM bytes (audio/pcm) with X-Input-Tokens / X-Output-Tokens headers.",
+        "operationId": "text_to_speech_audio_speech__post",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } }
+        }
+      }
+    },
+    "/images/generate/": {
+      "post": {
+        "summary": "Generate Image",
+        "description": "Generate image(s) via the gateway.\n\nReturns images immediately for sync providers (Google, OpenAI) or\nan operation_id for async providers (Fal, Replicate).\n\nRequest body:\n    model (str): Image model name\n    prompt (str): Generation prompt\n    number_of_images (int, optional): Number of images to generate (default: 1)\n    aspect_ratio (str, optional): e.g. \"1:1\", \"16:9\"\n    image_size (str, optional): e.g. \"1024x1024\"\n    quality (str, optional): e.g. \"standard\", \"hd\"\n    input_images (list[str], optional): Input image URLs for edit mode",
+        "operationId": "generate_image_images_generate__post",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } }
+        }
+      }
+    },
+    "/images/generate/{operation_id}/": {
+      "get": {
+        "summary": "Poll Image Status",
+        "description": "Poll async image generation status (Fal/Replicate providers only).\n\nQuery params:\n    model (str): Image model name used for generation",
+        "operationId": "poll_image_status_images_generate__operation_id___get",
+        "parameters": [
+          { "name": "operation_id", "in": "path", "required": true, "schema": { "type": "string", "title": "Operation Id" } }
+        ],
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } },
+          "422": { "description": "Validation Error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HTTPValidationError" } } } }
+        }
+      }
+    },
+    "/video/generation/": {
+      "post": {
+        "summary": "Create Video",
+        "description": "Start async video generation.\n\nRequest body: {model, prompt, parameters?, input_urls?}\nReturns: {operation_id, status: \"processing\", video_model_id: int}",
+        "operationId": "create_video_video_generation__post",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } }
+        }
+      }
+    },
+    "/video/generation/{operation_id}/download/": {
+      "get": {
+        "summary": "Download Video File",
+        "description": "Download completed video — streams raw bytes (video/mp4).",
+        "operationId": "download_video_file_video_generation__operation_id__download__get",
+        "parameters": [
+          { "name": "operation_id", "in": "path", "required": true, "schema": { "type": "string", "title": "Operation Id" } }
+        ],
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } },
+          "422": { "description": "Validation Error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HTTPValidationError" } } } }
+        }
+      }
+    },
+    "/video/generation/{operation_id}/": {
+      "get": {
+        "summary": "Get Video Generation Status",
+        "description": "Poll video generation status.\n\nReturns: {operation_id, status, video_uri?, duration_seconds?}",
+        "operationId": "get_video_generation_status_video_generation__operation_id___get",
+        "parameters": [
+          { "name": "operation_id", "in": "path", "required": true, "schema": { "type": "string", "title": "Operation Id" } }
+        ],
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } },
+          "422": { "description": "Validation Error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/HTTPValidationError" } } } }
+        }
+      }
+    },
+    "/credits/": {
+      "get": {
+        "summary": "Get Credit Balance",
+        "description": "Return the authenticated member's remaining credit balance.",
+        "operationId": "get_credit_balance_credits__get",
+        "responses": {
+          "200": { "description": "Successful Response", "content": { "application/json": { "schema": {} } } }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ChatCompletionChoice": {
+        "properties": {
+          "index": { "type": "integer", "title": "Index", "default": 0 },
+          "message": { "$ref": "#/components/schemas/ChatCompletionMessage" },
+          "finish_reason": { "type": "string", "title": "Finish Reason", "default": "stop" }
+        },
+        "type": "object", "required": ["message"], "title": "ChatCompletionChoice"
+      },
+      "ChatCompletionMessage": {
+        "properties": {
+          "role": { "type": "string", "const": "assistant", "title": "Role", "default": "assistant" },
+          "content": { "type": "string", "title": "Content" }
+        },
+        "type": "object", "required": ["content"], "title": "ChatCompletionMessage"
+      },
+      "ChatCompletionUsage": {
+        "properties": {
+          "prompt_tokens": { "type": "integer", "title": "Prompt Tokens", "default": 0 },
+          "completion_tokens": { "type": "integer", "title": "Completion Tokens", "default": 0 },
+          "total_tokens": { "type": "integer", "title": "Total Tokens", "default": 0 }
+        },
+        "type": "object", "title": "ChatCompletionUsage"
+      },
+      "ChatMessage": {
+        "properties": {
+          "role": { "type": "string", "enum": ["system", "user", "assistant"], "title": "Role" },
+          "content": { "type": "string", "title": "Content" }
+        },
+        "type": "object", "required": ["role", "content"], "title": "ChatMessage"
+      },
+      "GatewayChatbotChatReq": {
+        "properties": {
+          "messages": { "items": { "$ref": "#/components/schemas/ChatMessage" }, "type": "array", "minItems": 1, "title": "Messages" },
+          "stream": { "type": "boolean", "title": "Stream", "default": false }
+        },
+        "type": "object", "required": ["messages"], "title": "GatewayChatbotChatReq",
+        "description": "Stateless from the caller's view — the caller supplies the full message\nhistory each call; no session is persisted server-side."
+      },
+      "GatewayChatbotChatRes": {
+        "properties": {
+          "id": { "type": "string", "title": "Id" },
+          "object": { "type": "string", "const": "chat.completion", "title": "Object", "default": "chat.completion" },
+          "created": { "type": "integer", "title": "Created", "default": 0 },
+          "model": { "type": "string", "title": "Model" },
+          "choices": { "items": { "$ref": "#/components/schemas/ChatCompletionChoice" }, "type": "array", "title": "Choices" },
+          "usage": { "anyOf": [ { "$ref": "#/components/schemas/ChatCompletionUsage" }, { "type": "null" } ] },
+          "credits": { "anyOf": [ { "type": "number" }, { "type": "null" } ], "title": "Credits" }
+        },
+        "type": "object", "required": ["id", "model", "choices"], "title": "GatewayChatbotChatRes"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": { "items": { "$ref": "#/components/schemas/ValidationError" }, "type": "array", "title": "Detail" }
+        },
+        "type": "object", "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": { "items": { "anyOf": [ { "type": "string" }, { "type": "integer" } ] }, "type": "array", "title": "Location" },
+          "msg": { "type": "string", "title": "Message" },
+          "type": { "type": "string", "title": "Error Type" },
+          "input": { "title": "Input" },
+          "ctx": { "type": "object", "title": "Context" }
+        },
+        "type": "object", "required": ["loc", "msg", "type"], "title": "ValidationError"
+      }
+    }
+  },
+  "servers": [ { "url": "/v1/gateway" } ]
+}

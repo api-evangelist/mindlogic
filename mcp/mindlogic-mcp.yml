@@ -2,63 +2,67 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/mindlogic-api-gateway-openapi-original.json
-note: >-
-  No official hosted MCP server was found for Mindlogic. This is a CANDIDATE
-  tool list derived one-to-one from the FactChat API Gateway OpenAPI operations,
-  as a starting point for an MCP server.
+note: No official hosted MCP server was found for Mindlogic. This is a CANDIDATE tool list derived one-to-one
+  from the FactChat API Gateway OpenAPI operations, as a starting point for an MCP server.
 server:
   name: mindlogic-api-gateway
   transport: http
   base_url: https://factchat-cloud.mindlogic.ai/v1/gateway
 tools:
-  - name: list_models
-    description: List all accessible models in OpenAI format.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#list_models_models__get
-  - name: get_model
-    description: Get a single model detail in OpenAI format.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#get_model_models__model___get
-  - name: chat_completions
-    description: OpenAI-compatible chat completions.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#chat_completions_chat_completions__post
-  - name: chatbot_chat_completions
-    description: Call a specific FactChat chatbot via API key (OpenAI-compatible).
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#GatewayChatbotChatCompletions
-  - name: anthropic_list_models
-    description: List accessible Anthropic models in Anthropic API format.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#AnthropicListModels
-  - name: anthropic_messages
-    description: Anthropic Messages API pass-through.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#AnthropicMessages
-  - name: anthropic_count_tokens
-    description: Anthropic count_tokens pass-through.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#AnthropicCountTokens
-  - name: create_response
-    description: OpenAI Responses API pass-through.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#CreateResponse
-  - name: get_response
-    description: Poll an OpenAI background response.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#GetResponse
-  - name: cancel_response
-    description: Cancel an OpenAI background response.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#CancelResponse
-  - name: text_to_speech
-    description: Generate speech audio from text using a Gemini TTS model.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#text_to_speech_audio_speech__post
-  - name: generate_image
-    description: Generate image(s) via the gateway.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#generate_image_images_generate__post
-  - name: poll_image_status
-    description: Poll async image-generation status.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#poll_image_status_images_generate__operation_id___get
-  - name: create_video
-    description: Start async video generation.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#create_video_video_generation__post
-  - name: get_video_generation_status
-    description: Poll video generation status.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#get_video_generation_status_video_generation__operation_id___get
-  - name: download_video_file
-    description: Download a completed video (streams video/mp4).
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#download_video_file_video_generation__operation_id__download__get
-  - name: get_credit_balance
-    description: Return the authenticated member's remaining credit balance.
-    source_operation: openapi/mindlogic-api-gateway-openapi-original.json#get_credit_balance_credits__get
+- name: list_models
+  description: List all accessible models in OpenAI format.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#list_models_models__get
+- name: get_model
+  description: Get a single model detail in OpenAI format.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#get_model_models__model___get
+- name: chat_completions
+  description: OpenAI-compatible chat completions.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#chat_completions_chat_completions__post
+- name: chatbot_chat_completions
+  description: Call a specific FactChat chatbot via API key (OpenAI-compatible).
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#GatewayChatbotChatCompletions
+- name: anthropic_list_models
+  description: List accessible Anthropic models in Anthropic API format.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#AnthropicListModels
+- name: anthropic_messages
+  description: Anthropic Messages API pass-through.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#AnthropicMessages
+- name: anthropic_count_tokens
+  description: Anthropic count_tokens pass-through.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#AnthropicCountTokens
+- name: create_response
+  description: OpenAI Responses API pass-through.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#CreateResponse
+- name: get_response
+  description: Poll an OpenAI background response.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#GetResponse
+- name: cancel_response
+  description: Cancel an OpenAI background response.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#CancelResponse
+- name: text_to_speech
+  description: Generate speech audio from text using a Gemini TTS model.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#text_to_speech_audio_speech__post
+- name: generate_image
+  description: Generate image(s) via the gateway.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#generate_image_images_generate__post
+- name: poll_image_status
+  description: Poll async image-generation status.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#poll_image_status_images_generate__operation_id___get
+- name: create_video
+  description: Start async video generation.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#create_video_video_generation__post
+- name: get_video_generation_status
+  description: Poll video generation status.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#get_video_generation_status_video_generation__operation_id___get
+- name: download_video_file
+  description: Download a completed video (streams video/mp4).
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#download_video_file_video_generation__operation_id__download__get
+- name: get_credit_balance
+  description: Return the authenticated member's remaining credit balance.
+  source_operation: openapi/mindlogic-api-gateway-openapi-original.json#get_credit_balance_credits__get
+deployment:
+  mode: none
+  verified: derived
+  tools: 17
+  checked: '2026-08-12'
+  source: catalog MCP census

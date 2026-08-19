@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Audio Chat API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Chat",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Chat Completions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/chat/completions/"
+          },
+          "docs": "Chat Completions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

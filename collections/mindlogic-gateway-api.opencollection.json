@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Audio gateway API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "gateway",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Call a specific chatbot via API key (OpenAI-compatible)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/chatbots/:chatbot_id/chat/completions/",
+            "params": [
+              {
+                "name": "chatbot_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Call a specific chatbot via API key (OpenAI-compatible)"
+        },
+        {
+          "info": {
+            "name": "List Anthropic models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/gateway/claude/v1/models/"
+          },
+          "docs": "List accessible Anthropic models in Anthropic API format.\n\nUsed by Claude for Office and other Anthropic SDK clients that call\nGET /v1/models to discover available models."
+        },
+        {
+          "info": {
+            "name": "Anthropic Messages API pass-through",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/claude/v1/messages/"
+          },
+          "docs": "Anthropic Messages API pass-through"
+        },
+        {
+          "info": {
+            "name": "Anthropic count_tokens pass-through",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/claude/v1/messages/count_tokens/"
+          },
+          "docs": "Pass-through proxy for Anthropic token counting. No credit logic needed."
+        },
+        {
+          "info": {
+            "name": "OpenAI Responses API pass-through",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/responses/"
+          },
+          "docs": "OpenAI Responses API pass-through"
+        },
+        {
+          "info": {
+            "name": "Poll OpenAI background response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/gateway/responses/:response_id/",
+            "params": [
+              {
+                "name": "response_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Poll OpenAI background response"
+        },
+        {
+          "info": {
+            "name": "Cancel OpenAI background response",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/responses/:response_id/cancel/",
+            "params": [
+              {
+                "name": "response_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel OpenAI background response"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

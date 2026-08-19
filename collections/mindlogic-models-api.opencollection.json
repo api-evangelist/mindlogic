@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Audio Models API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/gateway/models/"
+          },
+          "docs": "List all accessible models in OpenAI format."
+        },
+        {
+          "info": {
+            "name": "Get Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/gateway/models/:model/",
+            "params": [
+              {
+                "name": "model",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single model detail in OpenAI format."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

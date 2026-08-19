@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Audio API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Audio",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Text To Speech",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/audio/speech/"
+          },
+          "docs": "Generate speech audio from text using a Gemini TTS model.\n\nRequest body: {model, input, voice, speakers?}\nResponse: raw PCM bytes (audio/pcm) with X-Input-Tokens / X-Output-Tokens headers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

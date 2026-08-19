@@ -1,0 +1,106 @@
+{
+  "item": [
+    {
+      "id": "2d03f514-c905-46eb-b743-667837749f38",
+      "name": "Audio",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dd3c336b-d942-4921-9659-266a339ee7d3",
+          "name": "Text To Speech",
+          "request": {
+            "name": "Text To Speech",
+            "description": {
+              "content": "Generate speech audio from text using a Gemini TTS model.\n\nRequest body: {model, input, voice, speakers?}\nResponse: raw PCM bytes (audio/pcm) with X-Input-Tokens / X-Output-Tokens headers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "audio",
+                "speech",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c22d7cd5-b02d-46b6-bf56-e77dcf7fc25a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "audio",
+                    "speech",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/v1/gateway",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4517f842-c158-4ddf-808d-09c92a7f1df1",
+    "name": "Fast Audio API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

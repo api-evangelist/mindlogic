@@ -1,0 +1,65 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Audio Video API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Video",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Video",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/video/generation/"
+          },
+          "docs": "Start async video generation.\n\nRequest body: {model, prompt, parameters?, input_urls?}\nReturns: {operation_id, status: \"processing\", video_model_id: int}"
+        },
+        {
+          "info": {
+            "name": "Download Video File",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/gateway/video/generation/:operation_id/download/",
+            "params": [
+              {
+                "name": "operation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Download completed video — streams raw bytes (video/mp4)."
+        },
+        {
+          "info": {
+            "name": "Get Video Generation Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/gateway/video/generation/:operation_id/",
+            "params": [
+              {
+                "name": "operation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Poll video generation status.\n\nReturns: {operation_id, status, video_uri?, duration_seconds?}"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

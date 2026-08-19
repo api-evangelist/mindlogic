@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fast Audio Images API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Images",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate Image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "/v1/gateway/images/generate/"
+          },
+          "docs": "Generate image(s) via the gateway.\n\nReturns images immediately for sync providers (Google, OpenAI) or\nan operation_id for async providers (Fal, Replicate).\n\nRequest body:\n    model (str): Image model name\n    prompt (str): Generation prompt\n    number_of_images (int, optional): Number of images to generate (default: 1)\n    aspect_ratio (str, optional): e.g. \"1:1\", \"16:9\"\n    image_size (str, optional): e.g. \"1024x1024\"\n    quality (str, optional): e.g. \"standard\", \"hd\"\n    input_images (list[str"
+        },
+        {
+          "info": {
+            "name": "Poll Image Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "/v1/gateway/images/generate/:operation_id/",
+            "params": [
+              {
+                "name": "operation_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Poll async image generation status (Fal/Replicate providers only).\n\nQuery params:\n    model (str): Image model name used for generation"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

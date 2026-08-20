@@ -41,6 +41,15 @@ created: '2026-07-17'
 modified: '2026-07-20'
 tags:
 - Company
+- Ai Ml
+- Generative AI
+- Conversational AI
+- LLM Gateway
+- Chatbots
+- API Gateway
+- Korea
+tags_raw:
+- Company
 - AI/ML
 - Generative AI
 - Conversational AI
@@ -108,6 +117,8 @@ apis:
   humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
   baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
   tags:
+  - Gateway
+  tags_raw:
   - gateway
   properties:
   - type: OpenAPI
@@ -124,6 +135,8 @@ apis:
   humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
   baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
   tags:
+  - Image
+  tags_raw:
   - Images
   properties:
   - type: OpenAPI

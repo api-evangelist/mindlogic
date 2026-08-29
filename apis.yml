@@ -11,6 +11,18 @@ description: >-
   Google Gemini, xAI and Perplexity behind a single API key, metered in credits,
   with chat completions, an OpenAI Responses pass-through, an Anthropic Messages
   pass-through, text-to-speech, and image/video generation.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve

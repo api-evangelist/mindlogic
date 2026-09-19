@@ -60,7 +60,7 @@ tags:
 - LLM Gateway
 - Chatbots
 - API Gateway
-- Korea
+- South Korea
 tags_raw:
 - Company
 - AI/ML
@@ -114,6 +114,8 @@ apis:
   humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
   baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
   tags:
+  - Credit
+  tags_raw:
   - Credits
   properties:
   - type: OpenAPI
@@ -130,7 +132,7 @@ apis:
   humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
   baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
   tags:
-  - Gateway
+  - Gateways
   tags_raw:
   - gateway
   properties:

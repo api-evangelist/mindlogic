@@ -1,16 +1,16 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Fast Audio gateway API
+  title: Fast Gateway API
   version: 0.1.0
 servers:
 - url: /v1/gateway
 tags:
-- name: gateway
+- name: Gateway
 paths:
   /chatbots/{chatbot_id}/chat/completions/:
     post:
       tags:
-      - gateway
+      - Gateway
       summary: Call a specific chatbot via API key (OpenAI-compatible)
       operationId: GatewayChatbotChatCompletions
       parameters:
@@ -48,7 +48,7 @@ paths:
   /claude/v1/models/:
     get:
       tags:
-      - gateway
+      - Gateway
       summary: List Anthropic models
       description: 'List accessible Anthropic models in Anthropic API format.
 
@@ -69,7 +69,7 @@ paths:
   /claude/v1/messages/:
     post:
       tags:
-      - gateway
+      - Gateway
       summary: Anthropic Messages API pass-through
       operationId: AnthropicMessages
       responses:
@@ -81,7 +81,7 @@ paths:
   /claude/v1/messages/count_tokens/:
     post:
       tags:
-      - gateway
+      - Gateway
       summary: Anthropic count_tokens pass-through
       description: Pass-through proxy for Anthropic token counting. No credit logic needed.
       operationId: AnthropicCountTokens
@@ -94,7 +94,7 @@ paths:
   /responses/:
     post:
       tags:
-      - gateway
+      - Gateway
       summary: OpenAI Responses API pass-through
       operationId: CreateResponse
       responses:
@@ -106,7 +106,7 @@ paths:
   /responses/{response_id}/:
     get:
       tags:
-      - gateway
+      - Gateway
       summary: Poll OpenAI background response
       operationId: GetResponse
       parameters:
@@ -131,7 +131,7 @@ paths:
   /responses/{response_id}/cancel/:
     post:
       tags:
-      - gateway
+      - Gateway
       summary: Cancel OpenAI background response
       operationId: CancelResponse
       parameters:
@@ -155,48 +155,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ChatCompletionUsage:
-      properties:
-        prompt_tokens:
-          type: integer
-          title: Prompt Tokens
-          default: 0
-        completion_tokens:
-          type: integer
-          title: Completion Tokens
-          default: 0
-        total_tokens:
-          type: integer
-          title: Total Tokens
-          default: 0
-      type: object
-      title: ChatCompletionUsage
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ChatMessage:
-      properties:
-        role:
-          type: string
-          enum:
-          - system
-          - user
-          - assistant
-          title: Role
-        content:
-          type: string
-          title: Content
-      type: object
-      required:
-      - role
-      - content
-      title: ChatMessage
     ValidationError:
       properties:
         loc:
@@ -223,41 +181,6 @@ components:
       - msg
       - type
       title: ValidationError
-    GatewayChatbotChatReq:
-      properties:
-        messages:
-          items:
-            $ref: '#/components/schemas/ChatMessage'
-          type: array
-          minItems: 1
-          title: Messages
-        stream:
-          type: boolean
-          title: Stream
-          default: false
-      type: object
-      required:
-      - messages
-      title: GatewayChatbotChatReq
-      description: 'Stateless from the caller''s view — the caller supplies the full message
-
-        history each call; no session is persisted server-side.'
-    ChatCompletionChoice:
-      properties:
-        index:
-          type: integer
-          title: Index
-          default: 0
-        message:
-          $ref: '#/components/schemas/ChatCompletionMessage'
-        finish_reason:
-          type: string
-          title: Finish Reason
-          default: stop
-      type: object
-      required:
-      - message
-      title: ChatCompletionChoice
     GatewayChatbotChatRes:
       properties:
         id:
@@ -295,6 +218,22 @@ components:
       - model
       - choices
       title: GatewayChatbotChatRes
+    ChatCompletionChoice:
+      properties:
+        index:
+          type: integer
+          title: Index
+          default: 0
+        message:
+          $ref: '#/components/schemas/ChatCompletionMessage'
+        finish_reason:
+          type: string
+          title: Finish Reason
+          default: stop
+      type: object
+      required:
+      - message
+      title: ChatCompletionChoice
     ChatCompletionMessage:
       properties:
         role:
@@ -309,3 +248,64 @@ components:
       required:
       - content
       title: ChatCompletionMessage
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    GatewayChatbotChatReq:
+      properties:
+        messages:
+          items:
+            $ref: '#/components/schemas/ChatMessage'
+          type: array
+          minItems: 1
+          title: Messages
+        stream:
+          type: boolean
+          title: Stream
+          default: false
+      type: object
+      required:
+      - messages
+      title: GatewayChatbotChatReq
+      description: 'Stateless from the caller''s view — the caller supplies the full message
+
+        history each call; no session is persisted server-side.'
+    ChatCompletionUsage:
+      properties:
+        prompt_tokens:
+          type: integer
+          title: Prompt Tokens
+          default: 0
+        completion_tokens:
+          type: integer
+          title: Completion Tokens
+          default: 0
+        total_tokens:
+          type: integer
+          title: Total Tokens
+          default: 0
+      type: object
+      title: ChatCompletionUsage
+    ChatMessage:
+      properties:
+        role:
+          type: string
+          enum:
+          - system
+          - user
+          - assistant
+          title: Role
+        content:
+          type: string
+          title: Content
+      type: object
+      required:
+      - role
+      - content
+      title: ChatMessage

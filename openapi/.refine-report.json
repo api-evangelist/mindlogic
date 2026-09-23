@@ -1,26 +1,49 @@
 {
   "provider": "mindlogic",
   "sources": [
-    "mindlogic-audio-api-openapi.yml",
-    "mindlogic-chat-api-openapi.yml",
-    "mindlogic-credits-api-openapi.yml",
-    "mindlogic-gateway-api-openapi.yml",
-    "mindlogic-images-api-openapi.yml",
-    "mindlogic-models-api-openapi.yml",
-    "mindlogic-video-api-openapi.yml"
+    "_original/mindlogic-api-gateway-openapi-original.json"
   ],
   "outputs": [
     "mindlogic-audio-api-openapi.yml",
     "mindlogic-chat-api-openapi.yml",
     "mindlogic-credits-api-openapi.yml",
-    "mindlogic-gateway-api-openapi.yml",
     "mindlogic-images-api-openapi.yml",
     "mindlogic-models-api-openapi.yml",
-    "mindlogic-video-api-openapi.yml"
+    "mindlogic-video-api-openapi.yml",
+    "mindlogic-gateway-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "mindlogic-api-gateway-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths GET /models/ -> Models",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths GET /models/{model}/ -> Models",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths POST /chat/completions/ -> Chat",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths POST /audio/speech/ -> Audio",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths POST /images/generate/ -> Images",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths GET /images/generate/{operation_id}/ -> Images",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths POST /video/generation/ -> Video",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths GET /video/generation/{operation_id}/download/ -> Video",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths GET /video/generation/{operation_id}/ -> Video",
+    "mindlogic-api-gateway-openapi-original.json: tagged paths GET /credits/ -> Credits",
+    "mindlogic-api-gateway-openapi-original.json: declared missing tag: Audio",
+    "mindlogic-api-gateway-openapi-original.json: declared missing tag: Chat",
+    "mindlogic-api-gateway-openapi-original.json: declared missing tag: Credits",
+    "mindlogic-api-gateway-openapi-original.json: declared missing tag: Images",
+    "mindlogic-api-gateway-openapi-original.json: declared missing tag: Models",
+    "mindlogic-api-gateway-openapi-original.json: declared missing tag: Video",
+    "mindlogic-api-gateway-openapi-original.json: declared missing tag: gateway",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "mindlogic-audio-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mindlogic-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mindlogic-credits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mindlogic-gateway-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mindlogic-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mindlogic-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mindlogic-video-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

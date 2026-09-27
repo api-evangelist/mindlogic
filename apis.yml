@@ -127,7 +127,7 @@ apis:
   - type: GettingStarted
     url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
 - aid: mindlogic:mindlogic-gateway-api
-  name: Mindlogic gateway API
+  name: Mindlogic Gateway API
   description: The gateway API from Mindlogic — 7 operation(s) for gateway.
   humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
   baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway

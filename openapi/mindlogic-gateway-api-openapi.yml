@@ -155,85 +155,23 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    ValidationError:
+    ChatMessage:
       properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        role:
           type: string
-          title: Message
-        type:
+          enum:
+          - system
+          - user
+          - assistant
+          title: Role
+        content:
           type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
+          title: Content
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    GatewayChatbotChatRes:
-      properties:
-        id:
-          type: string
-          title: Id
-        object:
-          type: string
-          const: chat.completion
-          title: Object
-          default: chat.completion
-        created:
-          type: integer
-          title: Created
-          default: 0
-        model:
-          type: string
-          title: Model
-        choices:
-          items:
-            $ref: '#/components/schemas/ChatCompletionChoice'
-          type: array
-          title: Choices
-        usage:
-          anyOf:
-          - $ref: '#/components/schemas/ChatCompletionUsage'
-          - type: 'null'
-        credits:
-          anyOf:
-          - type: number
-          - type: 'null'
-          title: Credits
-      type: object
-      required:
-      - id
-      - model
-      - choices
-      title: GatewayChatbotChatRes
-    ChatCompletionChoice:
-      properties:
-        index:
-          type: integer
-          title: Index
-          default: 0
-        message:
-          $ref: '#/components/schemas/ChatCompletionMessage'
-        finish_reason:
-          type: string
-          title: Finish Reason
-          default: stop
-      type: object
-      required:
-      - message
-      title: ChatCompletionChoice
+      - role
+      - content
+      title: ChatMessage
     ChatCompletionMessage:
       properties:
         role:
@@ -276,6 +214,43 @@ components:
       description: 'Stateless from the caller''s view — the caller supplies the full message
 
         history each call; no session is persisted server-side.'
+    GatewayChatbotChatRes:
+      properties:
+        id:
+          type: string
+          title: Id
+        object:
+          type: string
+          const: chat.completion
+          title: Object
+          default: chat.completion
+        created:
+          type: integer
+          title: Created
+          default: 0
+        model:
+          type: string
+          title: Model
+        choices:
+          items:
+            $ref: '#/components/schemas/ChatCompletionChoice'
+          type: array
+          title: Choices
+        usage:
+          anyOf:
+          - $ref: '#/components/schemas/ChatCompletionUsage'
+          - type: 'null'
+        credits:
+          anyOf:
+          - type: number
+          - type: 'null'
+          title: Credits
+      type: object
+      required:
+      - id
+      - model
+      - choices
+      title: GatewayChatbotChatRes
     ChatCompletionUsage:
       properties:
         prompt_tokens:
@@ -292,20 +267,45 @@ components:
           default: 0
       type: object
       title: ChatCompletionUsage
-    ChatMessage:
+    ChatCompletionChoice:
       properties:
-        role:
+        index:
+          type: integer
+          title: Index
+          default: 0
+        message:
+          $ref: '#/components/schemas/ChatCompletionMessage'
+        finish_reason:
           type: string
-          enum:
-          - system
-          - user
-          - assistant
-          title: Role
-        content:
-          type: string
-          title: Content
+          title: Finish Reason
+          default: stop
       type: object
       required:
-      - role
-      - content
-      title: ChatMessage
+      - message
+      title: ChatCompletionChoice
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError

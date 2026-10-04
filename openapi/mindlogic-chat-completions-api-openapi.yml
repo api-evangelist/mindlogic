@@ -5,7 +5,7 @@ info:
 servers:
 - url: /v1/gateway
 tags:
-- name: Chat
+- name: Chat Completions
 paths:
   /chat/completions/:
     post:
@@ -18,4 +18,4 @@ paths:
             application/json:
               schema: {}
       tags:
-      - Chat
+      - Chat Completions

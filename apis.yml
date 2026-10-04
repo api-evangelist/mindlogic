@@ -92,22 +92,6 @@ apis:
     url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
   - type: GettingStarted
     url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
-- aid: mindlogic:mindlogic-chat-api
-  name: Mindlogic Chat API
-  description: The Chat API from Mindlogic — 1 operation(s) for chat.
-  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
-  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
-  tags:
-  - Chat
-  properties:
-  - type: OpenAPI
-    url: openapi/mindlogic-chat-api-openapi.yml
-  - type: Documentation
-    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
-  - type: APIReference
-    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
-  - type: GettingStarted
-    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
 - aid: mindlogic:mindlogic-credits-api
   name: Mindlogic Credits API
   description: The Credits API from Mindlogic — 1 operation(s) for credits.
@@ -188,6 +172,22 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/mindlogic-video-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  - type: APIReference
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions
+  - type: GettingStarted
+    url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+- aid: mindlogic:mindlogic-chat-completions-api
+  name: Mindlogic Chat Completions API
+  description: The Chat Completions API from Mindlogic — 1 operation(s) for chat completions.
+  humanURL: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
+  baseURL: https://factchat-cloud.mindlogic.ai/v1/gateway
+  tags:
+  - Chat Completions
+  properties:
+  - type: OpenAPI
+    url: openapi/mindlogic-chat-completions-api-openapi.yml
   - type: Documentation
     url: https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview
   - type: APIReference

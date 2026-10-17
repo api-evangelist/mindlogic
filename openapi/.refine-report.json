@@ -12,7 +12,9 @@
     "mindlogic-video-api-openapi.yml",
     "mindlogic-gateway-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 1 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -35,11 +37,12 @@
     "mindlogic-api-gateway-openapi-original.json: declared missing tag: Models",
     "mindlogic-api-gateway-openapi-original.json: declared missing tag: Video",
     "mindlogic-api-gateway-openapi-original.json: declared missing tag: gateway",
-    "apis.yml register: already-registered"
+    "superseded outputs removed: mindlogic-chat-completions-api-openapi.yml",
+    "apis.yml register: written (+1 apis, 7 total)"
   ],
   "skipped": [
     "mindlogic-audio-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "mindlogic-chat-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "mindlogic-chat-completions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mindlogic-credits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mindlogic-gateway-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "mindlogic-images-api-openapi.yml: previously refined output, superseded by openapi/_original/",

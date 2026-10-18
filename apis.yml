@@ -54,7 +54,7 @@ created: '2026-07-17'
 modified: '2026-10-06'
 tags:
 - Company
-- Ai Ml
+- Artificial Intelligence
 - Generative AI
 - Conversational AI
 - LLM Gateway
@@ -70,6 +70,7 @@ tags_raw:
 - Chatbots
 - API Gateway
 - Korea
+- Ai Ml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -64,6 +64,127 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Mindlogic is a company surfaced as a portfolio company of partech and added to the API Evangelist network as a stub for enrichment. Sector: AI/ML. This profile is a lead awaiting the enrichment pipeline.
+Mindlogic is a South Korean generative-AI company whose products include FactChat (a multi-LLM enterprise chat platform with Studio chatbot building, deep research, meeting notes, and image/video generation), Bliss (a persona chatbot that learns a person's voice and personality for fan engagement), and Informe (a multilingual document-grounded website chatbot). For developers, Mindlogic operates the FactChat API Gateway — a unified, OpenAI- and Anthropic-compatible LLM proxy that fronts models from OpenAI, Anthropic, Google Gemini, xAI and Perplexity behind a single API key, metered in credits, with chat completions, an OpenAI Responses pass-through, an Anthropic Messages pass-through, text-to-speech, and image/video generation.
 
-Backed by: partech — https://mindlogic.ai/
+**Areas:** Company · Artificial Intelligence · Generative AI · Conversational AI · LLM Gateway · Chatbots · API Gateway · South Korea
+
+## Mindlogic on APIs.io
+
+Everything profiled for Mindlogic is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/mindlogic/](https://apis.io/providers/mindlogic/)** — or go straight to one of the APIs or properties below.
+
+### APIs (7)
+
+- [Mindlogic Audio API](https://apis.io/apis/mindlogic/mindlogic-audio-api/) — The Audio API from Mindlogic — 1 operation(s) for audio.
+- [Mindlogic Credits API](https://apis.io/apis/mindlogic/mindlogic-credits-api/) — The Credits API from Mindlogic — 1 operation(s) for credits.
+- [Mindlogic Gateway API](https://apis.io/apis/mindlogic/mindlogic-gateway-api/) — The gateway API from Mindlogic — 7 operation(s) for gateway.
+- [Mindlogic Images API](https://apis.io/apis/mindlogic/mindlogic-images-api/) — The Images API from Mindlogic — 2 operation(s) for images.
+- [Mindlogic Models API](https://apis.io/apis/mindlogic/mindlogic-models-api/) — The Models API from Mindlogic — 2 operation(s) for models.
+- [Mindlogic Video API](https://apis.io/apis/mindlogic/mindlogic-video-api/) — The Video API from Mindlogic — 3 operation(s) for video.
+- [Mindlogic Chat Completions API](https://apis.io/apis/mindlogic/mindlogic-chat-completions-api/) — The Chat Completions API from Mindlogic — 1 operation(s) for chat completions.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [mindlogic-api-gateway](https://apis.io/servers/mindlogic/mindlogic-api-gateway/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Mindlogic Agentic Access](https://apis.io/agentic-access/mindlogic/mindlogic-agentic-access/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Fast Audio API](https://apis.io/collections/mindlogic/open-mindlogic-audio-api/)
+- [Fast Audio Chat API](https://apis.io/collections/mindlogic/open-mindlogic-chat-api/)
+- [Fast Audio Credits API](https://apis.io/collections/mindlogic/open-mindlogic-credits-api/)
+- [Fast Audio gateway API](https://apis.io/collections/mindlogic/open-mindlogic-gateway-api/)
+- [Fast Audio Images API](https://apis.io/collections/mindlogic/open-mindlogic-images-api/)
+- [Fast Audio Models API](https://apis.io/collections/mindlogic/open-mindlogic-models-api/)
+- [Fast Audio Video API](https://apis.io/collections/mindlogic/open-mindlogic-video-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Mindlogic Api Gateway Overlay](https://apis.io/overlays/mindlogic/mindlogic-api-gateway-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Mindlogic Authentication](https://apis.io/security/mindlogic/mindlogic-authentication/)
+- [Mindlogic Domain Security](https://apis.io/security/mindlogic/mindlogic-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://mindlogic.ai/)
+- [Documentation](https://docs.mindlogic.ai/docs)
+- [Getting started](https://docs.mindlogic.ai/docs/general/api-gateway/getting-started/overview)
+- [API reference](https://docs.mindlogic.ai/docs/general/api-gateway/reference/chat-completions)
+- [Support](https://docs.mindlogic.ai/docs/general/factchat/support/help-center)
+- [Blog](https://blog.mindlogic.ai/)
+- [Terms of service](https://factchat-public.s3.ap-northeast-2.amazonaws.com/public/pdf/ko_terms_of_service.pdf)
+- [Privacy policy](https://factchat-public.s3.ap-northeast-2.amazonaws.com/public/pdf/ko_privacy_policy.pdf)
+
+## API Evangelist rating
+
+**Kin Score 35.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 39.4 |
+| Contract governance | 18.2 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 21.1 |
+
+**Agent readiness 25.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.7** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/mindlogic/](https://apis.io/providers/mindlogic/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Mindlogic: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/mindlogic/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
